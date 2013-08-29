@@ -10,7 +10,7 @@ from django.conf.urls.static import static
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'box_django.views.home', name='home'),
-    # url(r'^box_django/', include('box_django.foo.urls')),
+    url(r'^boxfiles/', include('boxfiles.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
