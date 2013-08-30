@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block title %}{{ file.name }} - Box File Page{% endblock title %}
+{% block header %}<h1>{{ file.name }} - Box File Page</h1>{% endblock header %}
+{% block content %}
+  <p><i>Description:</i> {{ file.description }}</p>
+  <p><i>Last modified:</i> {{ file.mtime }}</p>
+  <p><i>Created:</i> {{ file.ctime }}</p>
+  <p><i>Is Public:</i> {{ file.is_public }}</p>
+  <p><i>Content:</i></p>
+  <pre>
+{{ file.content }}
+  </pre>
+  {{ block.super }}
+{% endblock content %}

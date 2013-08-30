@@ -2,6 +2,29 @@
 {% block title %}Box All Files Page{% endblock title %}
 {% block header %}<h1>Box All Files Page</h1>{% endblock header %}
 {% block content %}
-  <p>You have no files in Box.</p>
+  {% if not num_files %}
+    <p>You have no files in Box.</p>
+  {% else %}
+    <h2>Public Files</h2>
+      <ul>
+        {% for file in public_files %}
+          <li>
+            <b><a href="{% url fileview file_id=file.id %}">{{ file.name }}</a></b>
+	    <p><i>Description:</i> {{ file.description }}</p>
+	    <p><i>Last modified:</i> {{ file.mtime }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    <h2>Private Files</h2>
+      <ul>
+        {% for file in private_files %}
+          <li>
+            <b><a href="{% url fileview file_id=file.id %}">{{ file.name }}</a></b>
+	    <p><i>Description:</i> {{ file.description }}</p>
+	    <p><i>Last modified:</i> {{ file.mtime }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   {{ block.super }}
 {% endblock content %}
